@@ -58,7 +58,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}

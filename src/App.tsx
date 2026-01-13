@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiExternalLink, FiCheck, FiSend } from 'react-icons/fi';
 
 // Smooth scroll helper
@@ -47,7 +46,7 @@ const Navbar = () => {
           AS
         </motion.a>
         <div style={{ display: 'flex', gap: '32px' }}>
-          {['Home', 'About', 'Skills', 'Projects', 'Experience', 'Contact'].map((item, index) => {
+          {['Home', 'About', 'Skills', 'Projects', 'Experience', 'Contact'].map((item) => {
             const sectionId = item.toLowerCase() === 'home' ? 'home' : item.toLowerCase();
             return (
               <motion.a
@@ -60,7 +59,7 @@ const Navbar = () => {
                 style={{ color: 'rgba(255, 255, 255, 0.8)', textDecoration: 'none', opacity: 1, fontSize: '16px', cursor: 'pointer' }}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 + 0.3 }}
+                transition={{ delay: 0.3 }}
                 whileHover={{ color: 'white', y: -2 }}
               >
                 {item}
@@ -749,21 +748,7 @@ const Contact = () => {
       // Just enter your email and get instant access key - no registration needed!
       const accessKey = '410f575f-d58f-41d8-91ee-2cbc508d149a';
       
-      // Check if access key is configured
-      if (accessKey === 'YOUR_ACCESS_KEY') {
-        // Show instructions for first-time setup
-        const setupMessage = `Quick Setup (30 seconds - NO SIGN-UP!):\n\n1. Go to: https://web3forms.com/\n2. Enter email: logicode.en@gmail.com\n3. Click "Get Your Access Key"\n4. Copy the key\n5. Update src/App.tsx (line ~664) with accessKey\n\nFor now, opening email client...`;
-        alert(setupMessage);
-        
-        // Fallback to mailto
-        const subject = encodeURIComponent(`Contact from ${formData.name}`);
-        const body = encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-        );
-        window.location.href = `mailto:logicode.en@gmail.com?subject=${subject}&body=${body}`;
-        setIsSubmitting(false);
-        return;
-      }
+      // Access key is configured
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',

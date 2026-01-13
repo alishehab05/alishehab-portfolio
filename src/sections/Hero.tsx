@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import MagneticButton from '../components/MagneticButton';
-import AnimatedText from '../components/AnimatedText';
 
 const Hero = () => {
   const containerVariants = {
@@ -15,17 +14,6 @@ const Hero = () => {
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
-    },
-  };
 
   const socialLinks = [
     { icon: FiGithub, href: 'https://github.com', label: 'GitHub' },

@@ -12,7 +12,6 @@ interface MagneticButtonProps {
 
 const MagneticButton = ({ 
   children, 
-  className = '', 
   href,
   onClick,
   variant = 'primary' 

@@ -1,7 +1,3 @@
-import { motion } from 'framer-motion';
-import AnimatedSection from '../components/AnimatedSection';
-import AnimatedText from '../components/AnimatedText';
-import Card3D from '../components/Card3D';
 
 const About = () => {
   const stats = [
@@ -141,7 +137,7 @@ const About = () => {
             gap: '32px',
             opacity: 1
           }}>
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <div
                 key={stat.label}
                 style={{

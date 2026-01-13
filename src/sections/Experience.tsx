@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
-import { FiBriefcase, FiGraduationCap } from 'react-icons/fi';
+import { FiBriefcase, FiBook } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
-import AnimatedText from '../components/AnimatedText';
 
 interface TimelineItem {
   type: 'work' | 'education';
@@ -9,7 +8,7 @@ interface TimelineItem {
   company: string;
   period: string;
   description: string[];
-  icon: typeof FiBriefcase | typeof FiGraduationCap;
+  icon: typeof FiBriefcase | typeof FiBook;
 }
 
 const Experience = () => {
@@ -62,7 +61,7 @@ const Experience = () => {
         'Specialized in Software Engineering',
         'Relevant coursework: Data Structures, Algorithms, Web Development',
       ],
-      icon: FiGraduationCap,
+      icon: FiBook,
     },
   ];
 

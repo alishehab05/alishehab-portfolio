@@ -12,10 +12,11 @@ export const useMagneticButton = (options: MagneticButtonOptions = {}) => {
     const button = buttonRef.current;
     if (!button) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e: Event) => {
+      const mouseEvent = e as MouseEvent;
       const rect = button.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
+      const x = mouseEvent.clientX - rect.left - rect.width / 2;
+      const y = mouseEvent.clientY - rect.top - rect.height / 2;
 
       button.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
     };
@@ -24,7 +25,7 @@ export const useMagneticButton = (options: MagneticButtonOptions = {}) => {
       button.style.transform = 'translate(0, 0)';
     };
 
-    button.addEventListener('mousemove', handleMouseMove);
+    button.addEventListener('mousemove', handleMouseMove as EventListener);
     button.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
