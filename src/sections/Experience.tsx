@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiBriefcase, FiBook } from 'react-icons/fi';
 import AnimatedSection from '../components/AnimatedSection';
+import AnimatedText from '../components/AnimatedText';
 
 interface TimelineItem {
   type: 'work' | 'education';
