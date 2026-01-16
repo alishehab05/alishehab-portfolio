@@ -12,6 +12,10 @@ const smoothScrollTo = (id: string) => {
 
 // Navbar Component
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navItems = ['Home', 'About', 'Skills', 'Projects', 'Experience', 'Contact'];
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -45,8 +49,8 @@ const Navbar = () => {
         >
           AS
         </motion.a>
-        <div style={{ display: 'flex', gap: '32px' }}>
-          {['Home', 'About', 'Skills', 'Projects', 'Experience', 'Contact'].map((item) => {
+        <div className="navbar-menu" style={{ display: 'flex', gap: '32px' }}>
+          {navItems.map((item) => {
             const sectionId = item.toLowerCase() === 'home' ? 'home' : item.toLowerCase();
             return (
               <motion.a
@@ -67,7 +71,61 @@ const Navbar = () => {
             );
           })}
         </div>
+        <button
+          className="navbar-toggle"
+          type="button"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          style={{
+            display: 'none',
+            width: '40px',
+            height: '40px',
+            borderRadius: '8px',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            background: 'rgba(255, 255, 255, 0.05)',
+            color: 'white',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+          }}
+          aria-label="Toggle navigation"
+        >
+          <span style={{ fontSize: '20px', lineHeight: 1 }}>{isMenuOpen ? '×' : '☰'}</span>
+        </button>
       </div>
+      {isMenuOpen && (
+        <div
+          className="navbar-mobile"
+          style={{
+            position: 'absolute',
+            top: '80px',
+            left: 0,
+            right: 0,
+            background: 'rgba(15, 23, 42, 0.95)',
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+            padding: '16px 24px',
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {navItems.map((item) => {
+              const sectionId = item.toLowerCase() === 'home' ? 'home' : item.toLowerCase();
+              return (
+                <a
+                  key={item}
+                  href={`#${sectionId}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    smoothScrollTo(sectionId);
+                    setIsMenuOpen(false);
+                  }}
+                  style={{ color: 'rgba(255, 255, 255, 0.9)', textDecoration: 'none', fontSize: '16px' }}
+                >
+                  {item}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </motion.nav>
   );
 };
@@ -308,9 +366,9 @@ const AnimatedSection = ({ children, delay = 0 }: { children: React.ReactNode; d
 // About Section
 const About = () => {
   const stats = [
-    { number: '5+', label: 'Years Experience' },
-    { number: '50+', label: 'Projects Completed' },
-    { number: '30+', label: 'Happy Clients' },
+    { number: '1+', label: 'Years Experience' },
+    { number: '20+', label: 'Projects Completed' },
+    { number: '20+', label: 'Happy Clients' },
   ];
 
   return (
@@ -633,37 +691,23 @@ const Experience = () => {
   const experiences = [
     {
       type: 'work',
-      title: 'Senior Software Engineer',
-      company: 'Tech Company',
-      period: '2021 - Present',
+      title: 'Software Engineer & Fullstack',
+      company: 'Freelance / Independent',
+      period: '2025 - Present',
       description: [
-        'Led development of multiple high-traffic web applications',
-        'Mentored junior developers and conducted code reviews',
-        'Implemented CI/CD pipelines reducing deployment time by 60%',
-        'Collaborated with cross-functional teams to deliver products on time',
-      ],
-    },
-    {
-      type: 'work',
-      title: 'Full Stack Developer',
-      company: 'Startup Inc.',
-      period: '2019 - 2021',
-      description: [
-        'Developed and maintained React-based frontend applications',
-        'Built RESTful APIs using Node.js and Express',
-        'Optimized application performance resulting in 40% faster load times',
-        'Participated in agile development processes',
+        'Building modern web applications with React and TypeScript',
+        'Delivering full-stack solutions with clean, maintainable code',
+        'Collaborating with clients to ship production-ready features',
       ],
     },
     {
       type: 'education',
-      title: 'Bachelor of Science',
+      title: 'Bachelor Degree',
       company: 'Computer Science',
-      period: '2014 - 2018',
+      period: '2022 - 2025',
       description: [
-        'Graduated with honors',
-        'Specialized in Software Engineering',
-        'Relevant coursework: Data Structures, Algorithms, Web Development',
+        'Focused on software engineering fundamentals',
+        'Coursework in data structures, algorithms, and web development',
       ],
     },
   ];

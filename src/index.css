@@ -28,6 +28,21 @@ body {
   background-color: #0f172a;
 }
 
+/* Responsive navbar */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none !important;
+  }
+
+  .navbar-toggle {
+    display: inline-flex !important;
+  }
+
+  .navbar-mobile {
+    display: block;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
